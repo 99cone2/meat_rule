@@ -178,7 +178,7 @@ public class ServController extends BaseController {
 		return "redirect:/serv/list.do";
 	}
 
-	//8.24
+	
 	//게시물 조회 + 조회수 중복방지
 	@GetMapping(value = "/read.do")
 	public String getServView(@RequestParam("cust_serv_no") int cust_serv_no, Model model, ServVO vo) throws Exception {
