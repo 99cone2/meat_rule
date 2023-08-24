@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<!-- main layout -->
+	<definition name="baseLayout" template="/WEB-INF/views/layout/layout.jsp">
+		<put-attribute name="title" value=""/>
+		<put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" />
+		<put-attribute name="body" value=""/>
+		<put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
+	</definition>
+	
+	<definition name="*/*/*/*" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}/{4}.jsp" />
+    </definition>
+	<definition name="*/*/*" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}.jsp" />
+    </definition>
+	
+	<definition name="*/*" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+    </definition>
+    <definition name="*" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />
+    </definition>
+    
+    <definition name="orderCartGoods" extends="baseLayout">
+       <put-attribute name="body" value="/WEB-INF/views/order/orderEachGoods.jsp" />
+    </definition>
+
+    
+      <!-- 상품관리 -->
+    <definition name="adminGoodsMain" extends="baseLayout">
+       <put-attribute name="title" value="관리자 메인 페이지" />
+       <put-attribute name="body" value="/WEB-INF/views/admin/goods/adminGoodsMain.jsp" />
+    </definition>
+ 
+    
+    <!-- 공지관리 -->
+   	<definition name="listNotice" extends="baseLayout">
+		<put-attribute name="title" value="공지목록" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/notice/listNotice.jsp" />
+	</definition>
+
+	<definition name="insertNotice" extends="baseLayout">
+		<put-attribute name="title" value="공지쓰기" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/notice/insertNoticeForm.jsp" />
+	</definition>
+	
+	 <definition name="viewNotice" extends="baseLayout">
+       <put-attribute name="title" value="공지상세" />
+       <put-attribute name="body" value="/WEB-INF/views/admin/notice/viewNotice.jsp" />
+    </definition>
+    
+</tiles-definitions>

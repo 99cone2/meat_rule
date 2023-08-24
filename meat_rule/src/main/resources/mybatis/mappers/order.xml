@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.order">
+
+    <resultMap id="orderGoodsResult" type="orderVO">
+        <!-- 	<result property="order_seq_num" column="order_seq_num" /> -->
+        <result property="order_id" column="order_id" />
+        <result property="mem_id" column="mem_id" />
+        <result property="goods_id" column="goods_id" />
+        <result property="mem_name" column="mem_name" />
+        <result property="goods_name" column="goods_name" />
+        <result property="order_quantity" column="order_quantity" />
+        <result property="goods_sales_price" column="goods_sales_price" />
+        <result property="file_name" column="file_name" />
+        <result property="order_rec_name" column="order_rec_name" />
+        <result property="order_rec_hp1" column="order_rec_hp1" />
+        <result property="order_rec_hp2" column="order_rec_hp2" />
+        <result property="order_rec_hp3" column="order_rec_hp3" />
+        <result property="order_delivery_address" column="order_delivery_address" />
+        <result property="order_delivery_message" column="order_delivery_message" />
+        <result property="order_deli_hope_date" column="order_deli_hope_date" />
+        <result property="order_pay_method" column="order_pay_method" />
+        <result property="card_company_name" column="card_company_name" />
+        <result property="card_pay_month" column="card_pay_month" />
+        <result property="pay_orderer_hp_num" column="pay_orderer_hp_num" />
+        <result property="order_delivery_status" column="order_delivery_status" />
+        <result property="final_total_price" column="final_total_price" />
+        <result property="use_point" column="use_point" />
+    </resultMap>
+    
+    <insert id="insertNewOrder" parameterType="orderVO" useGeneratedKeys="true" keyProperty="order_id">
+        <!-- AUTO_INCREMENT 속성을 이용하여 자동 증가하는 ID 생성 -->
+        <![CDATA[
+        insert into gogi_order (
+            mem_id,
+            goods_id,
+            goods_name,
+            file_name,
+            order_quantity,
+            goods_sales_price,
+            mem_name,
+            ORDER_REC_NAME,
+            ORDER_REC_HP1,
+            ORDER_REC_HP2,
+            ORDER_REC_HP3,
+            ORDER_DELIVERY_ADDRESS,
+            ORDER_DELIVERY_MESSAGE,
+            ORDER_DELI_HOPE_DATE,
+            order_pay_method,
+            CARD_COMPANY_NAME,
+            CARD_PAY_MONTH,
+            ORDER_ORDERER_HP,
+            ORDER_DELIVERY_STATUS,
+            FINAL_TOTAL_PRICE,
+            USE_POINT
+        ) values (
+            #{mem_id},
+            #{goods_id},
+            #{goods_name},
+            #{file_name},
+            #{order_quantity},
+            #{goods_sales_price},
+            #{mem_name},
+            #{order_rec_name},
+            #{order_rec_hp1},
+            #{order_rec_hp2},
+            #{order_rec_hp3},
+            #{order_delivery_address},
+            #{order_delivery_message},
+            #{order_deli_hope_date},
+            #{order_pay_method},
+            #{card_company_name},
+            #{card_pay_month},
+            #{pay_orderer_hp_num},
+            #{order_delivery_status},
+            #{final_total_price},
+            #{use_point}
+        )
+        ]]>
+    </insert>
+    
+    <select id="selectOrderID" resultType="int">
+        <!-- AUTO_INCREMENT 속성을 이용하여 자동 증가하는 ID 생성 -->
+        <![CDATA[
+        select last_insert_id()
+        ]]>
+    </select>
+    
+    <!-- 포인트 사용 업데이트 -->
+    <update id="updatePoint">
+        update gogi_member
+        set mem_point=#{mem_point}
+        where mem_id=#{mem_id}
+    </update>
+
+</mapper>

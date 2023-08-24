@@ -1,0 +1,382 @@
+@charset "UTF-8";
+  .tab {
+	overflow: hidden;
+	background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+	background-color: inherit;
+	float: left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 14px 16px;
+	transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+	background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+	background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+	display: none;
+	padding: 6px 12px;
+	border: 1px solid #ccc;
+	border-top: none;
+}
+/* banner/why css */
+#delivery_banner>a>img {
+	width: 100%
+}
+
+#delivery_why {
+	width: 100%;
+	height: 600px;
+}
+
+.d_f {
+	font-family: 'Nanum Gothic', sans-serif;
+	font-weight: 800;
+	padding-top: 96px;
+	font-size: 50px;
+	letter-spacing: -1.2px;
+	text-align: center;
+}
+
+ul {
+	list-style: none;
+	/* 나중에 다시 확인 */
+	margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+	
+}
+ 
+
+img {
+	overflow-clip-margin: content-box;
+	overflow: clip;
+}
+
+#delivery_banner>a>li {
+	text-align: center;
+}
+section {
+    display: block;
+}
+ li{
+     display: list-item;}
+
+
+ 
+ /* .delivery_container .delivery_why  ul li  {
+    width: 241px;
+    text-align: center;
+    margin-left: 34px;
+} */
+  
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+ 
+
+#delivery_why>ul {
+	display: flex;
+	margin-top: 48px;
+}
+
+/* #delivery_why ul li:first-child {
+    margin-left: 50px;
+} */
+
+#delivery_why p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+#delivery_why_d{
+width: 100%; 
+text-align: center;
+margin-top: 100px;
+}
+ 
+ 
+#delivery_why_d li{
+display: inline-block; 
+text-align: center;
+m
+/*   margin-left: 50px; */ } 
+
+.dh6 {
+	font-family: 'Nanum Gothic', sans-serif;
+	font-weight: 400;
+    display: block;
+    font-size:20px;;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  /*   margin-block-start: 2.33em;
+    margin-block-end: 2.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px; */
+    font-weight: bold;
+}
+
+#delivery_why_d p {
+    display: block;
+    width: 310px;
+    height: 50px;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;  
+    font-family: 'Nanum Gothic', sans-serif;
+	font-weight: 400;
+}
+
+#delivery_where {
+ 
+	width: 100%;
+	height: 400px;
+	background-color: #f4f4f4;
+}
+
+ 
+#delivery_search{
+	width: 100%; 
+text-align: center;
+margin-top: 100px;
+}
+
+#delivery_search {
+  width: 100%;
+  text-align: center;
+  margin-top: 70px;
+}
+
+#member_post,
+#member_addr {
+  width: 200px;
+  height: 30px;
+  padding: 5px;
+  margin-right: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#member_btn {
+  width: 80px;
+  height: 30px;
+  font-size: 16px;
+  background-color: #ccc;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#delivery_message {
+  display: none;
+  margin-top: 20px;
+}
+
+#delivery_message p {
+font-family: 'Nanum Gothic', sans-serif;
+	font-weight: 800;
+	padding-top: 20px;
+	font-size: 30px;
+	letter-spacing: -1.2px;
+	text-align: center;
+}
+
+
+
+.tab {
+  overflow: hidden;
+/*   border: 1px solid #ccc; */
+  background-color: #ffffff;
+  text-align: center; /* Add this line to center-align the buttons */
+    display: flex;
+  justify-content: center;
+}
+
+.tab button {
+  background-color: inherit;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 30px 50px;
+  transition: 0.3s;
+  
+  font-family: 'Nanum Gothic', sans-serif;
+	font-weight: 400;
+    display: block;
+    font-size:20px;;
+      font-weight: bold;
+}   
+
+
+.tabcontent{
+		width: 100%; 
+text-align: center;
+margin-top: 20px;
+}
+
+.tab_c_p1{
+ 	 font-family: 'Nanum Gothic', sans-serif;
+	font-weight: 400;
+    display: block;
+    font-size:12px;
+   color: gray;
+}
+
+h4{
+font-family: 'Nanum Gothic', sans-serif;
+	font-weight: 800;
+	/* padding-top: 5px; */
+	font-size: 43px;
+	letter-spacing: -1.2px;
+	text-align: center;
+	padding-bottom: 5px;
+}
+
+#tad{
+	display:  flex;
+    webkit-box-pack: center;
+    ms-flex-pack: center;
+    justify-content: center;
+   
+}
+
+
+
+.tab_d_p{
+	font-family: 'Nanum Gothic', sans-serif;
+	font-weight: 400;
+	font-size: 13px;
+	letter-spacing: -1.2px;
+	text-align: center;
+/* 	padding-bottom: 30px; */
+}
+
+
+/* .dv_c_d2{
+/* padding-top:100px;
+text-align: center;
+background-color: #f4f4f4;
+height: 300px;
+padding-top: 80px;
+width: 400px; 
+ 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;   */
+  
+  /* 
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 300px; /* 화면 높이에 맞게 조정 */
+/*   background-color: #f4f4f4;
+  width: 400px;  */
+  
+/*   
+   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center; */
+   /* 
+   text-align: center;
+  justify-content: center;
+   display: flex; */
+  /*  
+   background-color: #f4f4f4;
+    text-align: center;
+	justify-content: center; */
+   
+}
+ 
+ .dv_c_d2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 300px; /* 필요에 따라 높이를 조정하세요 */
+  background-color:blues;
+}
+
+.dv_c_d2 > div {
+  width: 100%;
+}
+
+.dv_c_d2 ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dv_c_d2 ul li {
+  width: 150px; /* 필요에 따라 각 목록 항목의 너비를 조정하세요 */
+  margin: 10px; 10px; /* 필요에 따라 목록 항목 사이의 간격을 조정하세요 */
+}
+
+.dv_c_d2 h6 {
+  margin: 0;
+}
+
+.dv_c_d2 p{
+ margin: 0;
+ font-family: 'Nanum Gothic', sans-serif;
+	font-weight: 400;
+	margin-top: 10px;
+	font-size: 15px;
+}
+
+
+ .span_dv{
+font-family: 'Nanum Gothic', sans-serif;
+	font-weight: 700;
+	margin-top: 30px;
+	font-size: 13px;
+	letter-spacing: -1.2px;
+	text-align: center;
+	margin-bottom: 20px;
+	color: orange;
+}
+ 
+
+
+.de_lp{
+	font-family: 'Nanum Gothic', sans-serif;
+	font-weight: 700;
+	margin-top: 8px;
+	font-size: 13px;
+	letter-spacing: -1.2px;
+	text-align: center;
+ 
+	 
+}
+
+.div_w{
+margin-top: 30px;
+margin-bottom: 10px;
+}  

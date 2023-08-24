@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.admin.member">
+
+	<resultMap id="memResult" type="memberVO">
+		<result property="mem_id" column="mem_id" />
+		<result property="mem_pw" column="mem_pw" />
+		<result property="mem_name" column="mem_name" />
+		<result property="mem_birth_y" column="mem_birth_y" />
+		<result property="mem_birth_m" column="mem_birth_m" />
+		<result property="mem_birth_d" column="mem_birth_d" />
+		<result property="mem_tel1" column="mem_tel1" />
+		<result property="mem_tel2" column="mem_tel2" />
+		<result property="mem_tel3" column="mem_tel3" />
+		<result property="mem_email" column="mem_email" />
+		<result property="zipcode" column="zipcode" />
+		<result property="roadAddress" column="roadAddress" />
+		<result property="jibunAddress" column="jibunAddress" />
+		<result property="namujiAddress" column="namujiAddress" />
+		<result property="mem_reg_date" column="mem_reg_date" />
+		<result property="mem_del_yn" column="mem_del_yn" />
+		<result property="del_note" column="del_note"/>
+	</resultMap>
+	
+	<select id="listMember" resultMap="memResult" parameterType="java.util.HashMap"  >		
+		SELECT * FROM gogi_member
+		WHERE DATE_FORMAT(mem_reg_date, '%Y-%m-%d') BETWEEN #{beginDate} AND #{endDate}
+			<if test="search_type=='mem_id'">
+			    AND mem_id=#{search_word}
+			</if>
+			<if test="search_type=='mem_name'">
+			    AND mem_name=#{search_word}
+			</if>
+			<if test="search_type=='mem_tel'">
+			    AND CONCAT(mem_tel1, mem_tel2, mem_tel3) = #{search_word}
+			</if>
+		ORDER BY mem_reg_date DESC
+		 LIMIT 10 OFFSET #{offset}
+	</select>
+	
+    <select id="memberDetail" resultMap="memResult" parameterType="String"  >
+	    <![CDATA[
+		    select * from gogi_member
+            where mem_id=#{mem_id}
+    	]]>
+	</select>	
+	
+	<select id="memberCount" resultType="int">
+			SELECT COUNT(*) FROM gogi_member;
+	</select>
+	
+	<update id="modifyMemberInfo" parameterType="java.util.HashMap">
+	    
+	    <if test="mem_pw!='' and mem_pw!=null or
+	              mem_birth_y!='' and mem_birth_y!=null or
+	              mem_birth_m!='' and mem_birth_m!=null or
+	              mem_birth_d!='' and mem_birth_d!=null or
+	              mem_tel1!='' and mem_tel1!=null or
+	              mem_tel2!='' and mem_tel2!=null or
+	              mem_tel3!='' and mem_tel3!=null or
+	              mem_email!='' and mem_email!=null or
+	              zipcode!='' and zipcode!=null or
+	              roadAddress!='' and roadAddress!=null or
+	              jibunAddress!='' and jibunAddress!=null or
+	              namujiAddress!='' and namujiAddress!=null">
+	        update gogi_member
+	        <set>
+	            <if test="mem_pw!='' and mem_pw!=null">mem_pw=#{mem_pw},</if>
+	            <if test="mem_birth_y!='' and mem_birth_y!=null">mem_birth_y=#{mem_birth_y},</if>
+	            <if test="mem_birth_m!='' and mem_birth_m!=null">mem_birth_m=#{mem_birth_m},</if>
+	            <if test="mem_birth_d!='' and mem_birth_d!=null">mem_birth_d=#{mem_birth_d},</if>
+	            <if test="mem_tel1!='' and mem_tel1!=null">mem_tel1=#{mem_tel1},</if>
+	            <if test="mem_tel2!='' and mem_tel2!=null">mem_tel2=#{mem_tel2},</if>
+	            <if test="mem_tel3!='' and mem_tel3!=null">mem_tel3=#{mem_tel3},</if>
+	            <if test="mem_email!='' and mem_email!=null">mem_email=#{mem_email},</if>
+	            <if test="zipcode!='' and zipcode!=null">zipcode=#{zipcode},</if>
+	            <if test="roadAddress!='' and roadAddress!=null">roadAddress=#{roadAddress},</if>
+	            <if test="jibunAddress!='' and jibunAddress!=null">jibunAddress=#{jibunAddress},</if>
+	            <if test="namujiAddress!='' and namujiAddress!=null">namujiAddress=#{namujiAddress},</if>
+	        </set>
+	        where mem_id=#{mem_id}
+	    </if>
+	</update>
+	
+	<!-- 회원삭제 -->
+	<delete id="deleteMember" parameterType="String">
+	  delete from gogi_member
+	  where mem_id=#{mem_id}
+	</delete>
+	
+	<update id="updateStatus" parameterType="memberVO">
+	   update gogi_member set mem_del_yn=#{mem_del_yn}, del_note=#{del_note} 
+		where 
+		mem_id=#{mem_id}
+	</update>	
+	
+</mapper>

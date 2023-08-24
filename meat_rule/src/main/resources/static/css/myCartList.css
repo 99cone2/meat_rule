@@ -1,0 +1,103 @@
+@charset "UTF-8";
+
+.cartList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top:50px;
+  font-family: 'Noto Sans KR', sans-serif;
+  text-align: center;
+}
+.cartList table {
+  margin-top: 10px;
+  margin-bottom: 40px;
+
+  border-collapse: separate; /* 'collapse'에서 'separate'로 변경 */
+  width:100%;
+}
+
+.cartList th, .cartList td {
+  border-top: 1px solid #ddd; /* 위쪽에 border 추가 */
+  padding: 8px;
+  vertical-align: middle;
+}
+.cartList th:nth-child(1) {
+  width: 5%; /* 첫 번째 th 요소의 너비를 30%로 지정 */
+}
+.cartList th:nth-child(2) {
+  width: 15%; /* 두 번째 th 요소의 너비를 20%로 지정 */
+}
+.cartList th:nth-child(3) {
+  width: 25%; /* 세 번째 th 요소의 너비를 15%로 지정 */
+}
+.cartList th:nth-child(4) {
+  width: 15%; /* 네 번째 th 요소의 너비를 35%로 지정 */
+}
+.cartList th:nth-child(5) {
+  width: 10%; /* 첫 번째 th 요소의 너비를 30%로 지정 */
+}
+.cartList th:nth-child(6) {
+  width: 10%; /* 첫 번째 th 요소의 너비를 30%로 지정 */
+}
+.cartList th:nth-child(7) {
+  width: 5%; /* 첫 번째 th 요소의 너비를 30%로 지정 */
+}
+.cartList th {
+  border-bottom: 2px solid;
+  text-align: center; /* 테이블 헤더에 아래쪽 border 추가 */
+  height: 55px;
+}
+
+td .numBox {
+  display: inline-block;
+  vertical-align: middle;
+  margin: -5px;
+  border: 1px solid #ddd;
+  border-left: none;
+  border-right: none;
+  height: 30px;
+  width: 40px;
+  text-align: center; /* 이미 정의되어 있음 */
+  line-height: 30px;
+}
+
+td .minus,
+td .plus {
+ border: 1px solid #ddd; /* 수량 입력 칸에 border 적용 */
+    vertical-align: middle;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    width: 20px;
+    height: 30px;
+    font-weight: bold;	
+    background: transparent; /* 배경 제거 */
+    padding:0;
+}
+td .minus{
+border-right: none;
+}
+td .plus {
+border-left: none;
+}
+.goodsName{text-decoration: none;}
+
+.cart-total{
+	display: flex;
+ 	flex-direction: column;
+ 	align-items: center;
+ 	margin-top: 30px;
+ 	font-weight: 700;
+ 	font-size:15px;
+ 	width:90%;
+ 	font-family: 'Noto Sans KR', sans-serif; 
+ 	margin-bottom: 10px;
+ 	border:none;
+}
+
+
+
+
+
+
+
