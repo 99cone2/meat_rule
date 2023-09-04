@@ -161,7 +161,7 @@ public class AdminMemberControllerImpl extends BaseController implements AdminMe
 	        memberVO.setMem_del_yn(request.getParameter("status"));
 	        memberVO.setDel_note(request.getParameter("delNote"));
 	        adminMemberService.updateStatus(memberVO);
-	        // 예시로는 아래와 같이 상태와 메모를 콘솔에 출력하는 것으로 대체하였습니다.
+	        // 예시로는 아래와 같이 상태와 메모를 콘솔에 출력하는 것으로 대체
 	        System.out.println("회원 아이디: " + memberVO.getMem_id());
 	        System.out.println("변경된 상태: " + memberVO.getMem_del_yn());
 	        System.out.println("메모: " + memberVO.getDel_note());

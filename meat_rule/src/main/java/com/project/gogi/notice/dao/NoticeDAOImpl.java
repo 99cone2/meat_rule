@@ -132,7 +132,7 @@ public class NoticeDAOImpl implements NoticeDAO {
 				return sql.selectOne(namespace +".totalBoard");
 			}
 	
-		 
+		//faq끝 
 		 
 		 
 		 

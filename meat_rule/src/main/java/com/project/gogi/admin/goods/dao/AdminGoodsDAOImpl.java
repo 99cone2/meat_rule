@@ -20,17 +20,18 @@ public class AdminGoodsDAOImpl  implements AdminGoodsDAO{
 	
 	@Override
 	public int insertNewGoods(Map newGoodsMap) throws DataAccessException {
-		// 상품 정보를 추가합니다.
+		// 상품 정보를 추가
 		sqlSession.insert("mapper.admin.goods.insertNewGoods",newGoodsMap);		
 		return Integer.parseInt(newGoodsMap.get("goods_id").toString());
 	}
 	
+	//
 	@Override
 	public void insertGoodsImageFile(List<ImageFileVO> fileList)  throws DataAccessException {
 		for(int i=0; i<fileList.size();i++){
 			ImageFileVO imageFileVO=(ImageFileVO)fileList.get(i);
 			System.out.println("관리자 상품등록:"+imageFileVO.toString());
-			// 상품 이미지 정보를 추가합니다.
+			// 상품 이미지 정보를 추가
 			sqlSession.insert("mapper.admin.goods.insertGoodsImageFile",imageFileVO);
 		}
 	}
@@ -48,6 +49,7 @@ public class AdminGoodsDAOImpl  implements AdminGoodsDAO{
 		return goodsBean;
 	}
 	
+	//이미지
 	@Override
 	public List selectGoodsImageFileList(int goods_id) throws DataAccessException {
 		List imageList=new ArrayList();
@@ -55,11 +57,13 @@ public class AdminGoodsDAOImpl  implements AdminGoodsDAO{
 		return imageList;
 	}
 	
+	//상품 수정
 	@Override
 	public void updateGoodsInfo(Map goodsMap) throws DataAccessException{
 		sqlSession.update("mapper.admin.goods.updateGoodsInfo",goodsMap);
 	}
 	
+	//이미지 삭제
 	@Override
 	public void deleteGoodsImage(int goods_id) throws DataAccessException{
 		sqlSession.delete("mapper.admin.goods.deleteGoodsImage",goods_id);
@@ -71,11 +75,13 @@ public class AdminGoodsDAOImpl  implements AdminGoodsDAO{
 		return orderGoodsList;
 	}	
 	
+	//주문정보 수정
 	@Override
 	public void updateOrderGoods(Map orderMap) throws DataAccessException{
 		sqlSession.update("mapper.admin.goods.updateOrderGoods",orderMap);
 	}
 
+	//이미지 수정
 	@Override
 	public void updateGoodsImage(List<ImageFileVO> imageFileList) throws DataAccessException {
 		
