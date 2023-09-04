@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.review">
+
+	<resultMap id="reviewImageResult" type="reviewImageVO">
+		   <result property="img_no" column="img_no" />
+		   <result property="img_name" column="img_name" />
+		   <result property="img_date" column="img_date" />
+		   <result property="rev_no" column="rev_no" />
+		   <result property="mem_id" column="mem_id" />
+	</resultMap>
+	
+	<resultMap id="reviewResult" type="reviewVO">
+		   <result property="rev_no" column="rev_no" />
+		   <result property="rev_title" column="rev_title" />
+		   <result property="rev_content" column="rev_content" />
+		   <result property="rev_date" column="rev_date" />
+		   <result property="mem_id" column="mem_id" />
+		   <result property="goods_id" column="goods_id" />
+	</resultMap>
+ 
+
+ 	<!-- -작성 -->
+	   <insert id="reviewWrite" parameterType="java.util.Map" useGeneratedKeys="true" keyProperty="rev_no">
+	    	insert into GOGI_REVIEW_BOARD(rev_title, rev_content,rev_date,mem_id, goods_id)
+	        values (#{rev_title}, #{rev_content}, now(),#{mem_id},#{goods_id})
+	 	</insert>
+	 	
+	 	
+	 	<insert id="insertReviewImageFile" parameterType="java.util.List" >
+	       <![CDATA[    
+	         insert into GOGI_REVIEW_IMAGE (img_date,
+	                                      img_name,	                                  
+		                                  rev_no,
+		                                  mem_id)
+	                             values(now(),
+	                                  #{img_name},
+	                                  #{rev_no},
+	                                  #{mem_id})
+	      
+	      ]]>
+	   	</insert>
+   
+  	 <!-- 조회 -->
+	   <select id="reviewList" resultMap="reviewResult" >
+			select rev_no, rev_title, rev_content,rev_date,mem_id, goods_id
+			from GOGI_REVIEW_BOARD
+			where goods_id = #{goods_id}
+			order by rev_date desc
+		</select>
+		   
+		<select id="selectImageFile" resultMap="reviewImageResult" parameterType="int">
+	   		<![CDATA[
+	   		select * from GOGI_REVIEW_IMAGE where rev_no=#{rev_no}  
+	   		]]> 	
+	   	</select>
+   
+   
+   <!-- 삭제 -->
+	  <delete id="reviewDelete" parameterType="int">
+		 delete from
+		 GOGI_REVIEW_BOARD
+		 where rev_no = #{rev_no}
+	   </delete>
+	   
+	   
+	    
+  	 <!-- 리뷰 조회 -->
+	   <select id="myReviewList" resultMap="reviewResult" >
+			select rev_no, rev_content,rev_date,mem_id, goods_id
+			from GOGI_REVIEW_BOARD
+			where mem_id = #{mem_id}
+			order by rev_date desc
+		</select>
+   
+   
+ </mapper>
+   

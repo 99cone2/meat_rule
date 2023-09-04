@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.member">
+
+	<!-- resultMap 정의 -->
+	<resultMap id="memberResult" type="memberVO">
+		<result property="mem_id" column="mem_id" />
+		<result property="mem_pw" column="mem_pw" />
+		<result property="mem_name" column="mem_name" />
+		<result property="mem_birth_y" column="mem_birth_y" />
+		<result property="mem_birth_m" column="mem_birth_m" />
+		<result property="mem_birth_d" column="mem_birth_d" />
+		<result property="mem_tel1" column="mem_tel1" />
+		<result property="mem_tel2" column="mem_tel2" />
+		<result property="mem_tel3" column="mem_tel3" />	
+		<result property="mem_email" column="mem_email" />		
+		<result property="zipcode" column="zipcode" />
+		<result property="roadAddress" column="roadAddress" />
+		<result property="jibunAddress" column="jibunAddress" />
+		<result property="namujiAddress" column="namujiAddress" />
+		<result property="joinDate" column="joinDate" />
+		<result property="mem_point" column="mem_point" />
+		<result property="mem_reg_date" column="mem_reg_date" />
+		<result property="mem_del_yn" column="mem_del_yn" />
+	</resultMap>
+
+    <!-- 회원가입 -->
+    <insert id="insertNewMember" parameterType="memberVO">
+        <![CDATA[
+            insert into gogi_member(
+            mem_id,
+            mem_pw,
+            mem_name,
+            mem_birth_y,
+            mem_birth_m,
+            mem_birth_d,
+            mem_tel1,
+            mem_tel2,
+            mem_tel3,            
+            mem_email,            
+            zipcode,
+            roadAddress,
+            jibunAddress,
+            namujiAddress,
+            mem_point
+            )
+            values(
+            #{mem_id},
+            #{mem_pw},
+            #{mem_name},
+            #{mem_birth_y},
+            #{mem_birth_m},
+            #{mem_birth_d},
+            #{mem_tel1},
+            #{mem_tel2},
+            #{mem_tel3},
+            #{mem_email},
+            #{zipcode},
+            #{roadAddress},
+            #{jibunAddress},
+            #{namujiAddress},
+            3000
+            )
+        ]]>
+    </insert>
+
+    <!-- 로그인 -->
+    <select id="login" resultType="memberVO" parameterType="java.util.Map">
+        <![CDATA[
+            select * from gogi_member
+            where mem_id = #{mem_id}
+            and mem_pw = #{mem_pw}
+        ]]>
+    </select>
+    
+    <!-- ID 중복 체크 -->
+    <select id="checkId" parameterType="String" resultType="String">
+        select case when count(*) = 1 then 'true' else 'false' end
+        from gogi_member
+        where mem_id = #{mem_id}
+    </select>
+
+</mapper>

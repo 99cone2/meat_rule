@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.admin.order">
+
+	<resultMap id="orderResult" type="OrderVO">
+	    <result property="order_seq_num" column="order_seq_num" />
+	    <result property="order_id" column="order_id" />
+	    <result property="mem_id" column="mem_id" />
+	    <result property="goods_id" column="goods_id" />
+	    <result property="mem_name" column="mem_name" />
+	    <result property="goods_name" column="goods_name" />
+	    <result property="order_quantity" column="order_quantity" />
+	    <result property="goods_sales_price" column="goods_sales_price" />
+	    <result property="file_name" column="file_name" />
+	    <result property="order_rec_name" column="order_rec_name" />
+	    <result property="order_rec_hp1" column="order_rec_hp1" />
+	    <result property="order_rec_hp2" column="order_rec_hp2" />
+	    <result property="order_rec_hp3" column="order_rec_hp3" />
+	    <result property="order_delivery_address" column="order_delivery_address" />
+	    <result property="order_delivery_method" column="order_delivery_method" />
+	    <result property="order_delivery_message" column="order_delivery_message" />
+	    <result property="order_delivery_option" column="order_delivery_option" />
+	    <result property="order_pay_method" column="order_pay_method" />
+	    <result property="card_company_name" column="card_company_name" />
+	    <result property="card_pay_month" column="card_pay_month" />
+	    <result property="pay_orderer_hp_num" column="pay_orderer_hp_num" />
+	    <result property="order_pay_hp_payment_num" column="order_pay_hp_payment_num" />
+	    <result property="order_delivery_status" column="order_delivery_status" />
+	    <result property="order_time" column="order_time" />
+	</resultMap>
+	
+	<resultMap id="memberResult" type="memberVO">
+		<result property="mem_id" column="mem_id" />
+		<result property="mem_pw" column="mem_pw" />
+		<result property="mem_name" column="mem_name" />
+		
+		<result property="mem_birth_y" column="mem_birth_y" />
+		<result property="mem_birth_m" column="mem_birth_m" />
+		<result property="mem_birth_d" column="mem_birth_d" />
+
+		<result property="mem_tel1" column="mem_tel1" />
+		<result property="mem_tel2" column="mem_tel2" />
+		<result property="mem_tel3" column="mem_tel3" />
+
+		<result property="mem_email" column="mem_email" />
+		
+		<result property="zipcode" column="zipcode" />
+		<result property="roadAddress" column="roadAddress" />
+		<result property="jibunAddress" column="jibunAddress" />
+		<result property="namujiAddress" column="namujiAddress" />
+		<result property="mem_reg_date" column="mem_reg_date" />
+		<result property="mem_del_yn" column="mem_del_yn" />
+	</resultMap>
+	
+	<!-- 주문 상품 목록을 표시합니다. -->
+	<select id="selectNewOrderList" resultMap="orderResult" parameterType="java.util.HashMap">
+		 SELECT * FROM gogi_order		  
+		    ORDER BY order_time DESC
+		   LIMIT 10 OFFSET #{offset}
+	</select>
+	
+	<select id="orderCount" resultType="int">
+			SELECT COUNT(*) FROM gogi_order;
+	</select>
+	
+	<!-- 주문 상품의 배송 상태를 수정합니다. -->
+	<update id="updateDeliveryState" parameterType="java.util.Map">
+		UPDATE gogi_order
+		SET
+		    order_delivery_status = CASE
+		        WHEN #{order_delivery_status} IS NOT NULL AND #{order_delivery_status} != ''
+		            THEN #{order_delivery_status}
+		        ELSE order_delivery_status
+		    END
+		WHERE order_id = #{order_id};
+	</update>
+
+	<select id="selectOrderDetail" resultMap="orderResult" parameterType="int">
+	    <![CDATA[
+		    select * from gogi_order
+            where order_id=#{order_id}
+    	]]>
+	</select>
+
+	<select id="selectOrderer" resultMap="memberResult" parameterType="String">
+	    <![CDATA[
+			select * from gogi_member 
+			where mem_id=#{mem_id}
+		]]>
+	</select>
+</mapper>

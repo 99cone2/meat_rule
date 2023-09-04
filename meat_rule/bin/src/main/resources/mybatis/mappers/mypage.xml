@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.mypage">
+
+	<!-- 회원정보수정 -->
+	<update id ="updateMyInfo" parameterType="java.util.HashMap">
+			update gogi_member
+				<set>
+					<if test="mem_pw!='' and mem_pw!=null">
+						mem_pw=#{mem_pw},
+					</if>
+					<if test="mem_birth_y!='' and mem_birth_y!=null">
+						mem_birth_y=#{mem_birth_y},
+					</if>
+				      <if test="mem_birth_m!='' and mem_birth_m!=null">
+				         mem_birth_m=#{mem_birth_m},
+				      </if>
+				      <if test="mem_birth_d!='' and mem_birth_d!=null">
+				         mem_birth_d=#{mem_birth_d},
+				      </if>
+				      <if test="mem_tel1!='' and mem_tel1!=null">
+				         mem_tel1=#{mem_tel1},
+				      </if>
+				      <if test="mem_tel2!='' and mem_tel2!=null">
+				         mem_tel2=#{mem_tel2},
+				      </if>
+				      <if test="mem_tel3!='' and mem_tel3!=null">
+				         mem_tel3=#{mem_tel3},
+				      </if>
+				      <if test="mem_email!='' and mem_email!=null">
+				         mem_email=#{mem_email},
+				      </if>
+				      <if test="zipcode!='' and zipcode!=null">
+				         zipcode=#{zipcode},
+				      </if>
+				      <if test="roadAddress!='' and roadAddress!=null">
+				         roadAddress=#{roadAddress},
+				      </if>			     
+				      <if test="jibunAddress!='' and jibunAddress!=null">
+				         jibunAddress=#{jibunAddress},
+				      </if>
+				      <if test="namujiAddress!='' and namujiAddress!=null">
+				         namujiAddress=#{namujiAddress}
+				      </if>
+				   </set>
+			where 
+			mem_id=#{mem_id}
+		</update>
+		
+		<!-- 상품관련 -->
+			<resultMap id="orderGoodsResult" type="orderVO">
+				<result property="order_seq_num" column="order_seq_num" />
+				<result property="order_id" column="order_id" />
+				<result property="mem_id" column="mem_id" />
+				<result property="goods_id" column="goods_id" />
+				<result property="mem_name" column="mem_name" />
+				<result property="goods_name" column="goods_name" />
+				<result property="order_quantity" column="order_quantity" />
+				<result property="goods_sales_price" column="goods_sales_price" />
+				<result property="file_name" column="file_name" />
+				<result property="order_rec_name" column="order_rec_name" />
+				<result property="order_rec_hp1" column="order_rec_hp1" />
+				<result property="order_rec_hp2" column="order_rec_hp2" />
+				<result property="order_rec_hp3" column="order_rec_hp3" />
+				<result property="order_rec_tel1" column="order_rec_tel1" />
+				<result property="order_rec_tel2" column="order_rec_tel2" />
+				<result property="order_rec_tel3" column="order_rec_tel3" />
+				<result property="order_delivery_address" column="order_delivery_address" />
+				<result property="order_delivery_method" column="order_delivery_method" />
+				<result property="order_delivery_message" column="order_delivery_message" />
+				<result property="order_delivery_option" column="order_delivery_option" />
+				<result property="order_delivery_status" column="order_delivery_status" />
+				<result property="order_pay_method" column="order_pay_method" />
+				<result property="card_company_name" column="card_company_name" />
+				<result property="card_pay_month" column="card_pay_month" />
+				<result property="pay_orderer_hp_num" column="pay_orderer_hp_num" />
+				<result property="order_pay_hp_payment_num" column="order_pay_hp_payment_num" />
+				<result property="order_time" column="order_time" />
+			</resultMap>
+		
+		<!-- 로그인 정보 확인 -->
+		<select id ="selectMyDetailInfo" resultType="memberVO" parameterType="String"  >
+		    <![CDATA[
+			select * from gogi_member 
+			where mem_id=#{mem_id}
+	    	]]>
+		</select>
+
+		<!-- 주문 내역을 조회합니다. -->
+		<select id="selectMyOrderGoodsList" resultMap="orderGoodsResult"  parameterType="String"  >
+		    <![CDATA[
+				select * from gogi_order
+	            where mem_id=#{mem_id}
+	            order by order_time desc
+			]]>
+		</select>
+	
+		<select id="selectMyOrderInfo" resultMap="orderGoodsResult"   parameterType="String"  >
+		    <![CDATA[
+			    select * from gogi_order
+	            where order_id=#{order_id}
+	    	]]>
+		</select>
+		
+		<select id="selectMyOrderHistoryList" resultMap="orderGoodsResult" parameterType="java.util.Map"  >
+		    <![CDATA[
+				SELECT * FROM gogi_order
+				WHERE mem_id = #{mem_id}
+				AND DATE_FORMAT(order_time, '%Y-%m-%d') BETWEEN #{beginDate} AND #{endDate}
+				ORDER BY order_time DESC
+			]]>	    	<!-- 0817수정 -->
+		</select>
+
+		<!-- 주문 취소 -->
+		<update id="updateMyOrderCancel" parameterType="String">
+			update gogi_order
+			set order_delivery_status ='cancel_order'
+			where order_id=#{order_id}
+		</update>
+
+		<!-- 회원 삭제 -->
+		<delete id ="deleteMember" parameterType="String">
+		<![CDATA[
+			delete from gogi_member 
+			where mem_id=#{mem_id}
+	   	]]>
+		</delete>
+
+</mapper>
+

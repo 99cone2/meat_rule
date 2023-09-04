@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Social"> 
+
+	<!-- 정보 찾기 -->
+	<select id="findKakao" parameterType="java.util.HashMap" resultType="KakaoDTO">
+		SELECT * FROM kakao_table WHERE k_name=#{nickname} AND k_email=#{email}
+	</select>
+
+	<!-- 정보 찾기 -->
+	<select id="findMember" parameterType="java.util.HashMap" resultType="MemberVO">
+		SELECT * FROM gogi_member WHERE mem_id=#{k_number}
+	</select>
+	
+	<!-- 정보 저장 -->
+	<insert id="kakaoInsert" parameterType="java.util.HashMap">
+		INSERT INTO kakao_table(k_name, k_email)
+		VALUES(#{nickname}, #{email})
+	</insert>
+	
+</mapper>

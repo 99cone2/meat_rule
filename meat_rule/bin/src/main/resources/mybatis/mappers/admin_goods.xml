@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.admin.goods">
+	<!-- 리절트 맵 정의 -->	
+	<resultMap id="goodsResult" type="goodsVO">
+		<result property="goods_id" column="goods_id" />
+		<result property="goods_name" column="goods_name" />		
+		<result property="goods_price" column="goods_price" />
+ 		<result property="goods_seller" column="goods_seller" />		
+		<result property="goods_status" column="goods_status" />
+		<result property="goods_sales_price" column="goods_sales_price" />
+		<result property="goods_delivery_date" column="goods_delivery_date" />		
+		<result property="file_name" column="file_name" />
+		<result property="goods_sort" column="goods_sort" />		
+		<result property="goods_intro" column="goods_intro" />
+		<result property="goods_point" column="goods_point" />		
+	</resultMap>	
+
+	<resultMap id="imageResult" type="imageFileVO">
+	   <result property="goods_id" column="goods_id" />
+	   <result property="file_name" column="file_name" />
+	   <result property="reg_id" column="reg_id" />
+	   <result property="image_id" column="image_id" />
+	   <result property="file_type" column="file_type" />
+	   <result property="creDate" column="creDate" />
+	</resultMap>
+	
+	<resultMap id="orderGoodsResult" type="OrderVO">
+		<result property="order_id" column="order_id" />
+		<result property="mem_id" column="mem_id" />
+		<result property="goods_id" column="goods_id" />
+		<result property="goods_name" column="goods_name" />
+		<result property="goods_sales_price" column="goods_sales_price" />
+		
+		<result property="order_quantity" column="order_quantity" />
+		<result property="order_rec_name" column="order_rec_name" />
+		<result property="order_rec_hp1" column="order_rec_hp1" />
+		<result property="order_rec_hp2" column="order_rec_hp2" />
+		<result property="order_rec_hp3" column="order_rec_hp3" />
+		
+		<result property="order_rec_tel1" column="order_rec_tel1" />
+		<result property="order_rec_tel2" column="order_rec_tel2" />
+		<result property="order_rec_tel3" column="order_rec_tel3" />
+		
+		<result property="delivery_address" column="delivery_address" />
+		<result property="delivery_message" column="delivery_message" />
+		<result property="delivery_method" column="delivery_method" />
+		
+		<result property="order_pay_method" column="order_pay_method" />
+		<result property="card_company_name" column="card_company_name" />
+		<result property="card_pay_month" column="card_pay_month" />
+		
+		<result property="pay_orderer_hp_num" column="pay_orderer_hp_num" />
+		<result property="order_time" column="order_time" />
+		<result property="delivery_state" column="delivery_state" />
+		
+		<result property="file_name" column="file_name" />
+	</resultMap>
+	
+		<!-- <selectKey> => 새 상품을 추가하기 전에 시퀀스에서 상품 번호를 먼저 가져옵니다. -->
+	<insert id="insertNewGoods" parameterType="java.util.Map" useGeneratedKeys="true" keyProperty="goods_id" >
+	    
+	    <![CDATA[
+		  INSERT INTO gogi_goods (
+								    goods_sort,
+								    goods_name,
+								    goods_seller,
+								    goods_price,
+								    goods_sales_price,
+								    goods_delivery_date,
+								    goods_status,
+								    goods_intro,
+								    goods_weight,
+								    goods_point
+								) VALUES (
+								    #{goods_sort},
+								    #{goods_name},
+								    #{goods_seller},
+								    #{goods_price},
+								    #{goods_sales_price},
+								    #{goods_delivery_date},
+								    #{goods_status},
+								    #{goods_intro},
+								    #{goods_weight},
+								    #{goods_point}
+								);
+
+		]]>
+	</insert> 
+
+	   <insert id="insertGoodsImageFile" parameterType="imageFileVO" useGeneratedKeys="true" keyProperty="image_id">
+
+       <![CDATA[
+         insert into gogi_goods_image (goods_id,
+                                  file_name,
+                                  file_type,
+                                  reg_id,
+                                  creDate)
+                             values(#{goods_id},
+                                  #{file_name},
+                                  #{file_type},
+                                  #{reg_id},                               
+                                  NOW() )
+      ]]>
+   </insert>
+	
+		<select id="selectNewGoodsList" resultMap="goodsResult" parameterType="java.util.Map">
+			   <![CDATA[
+			    SELECT 
+			        goods_id,
+			        goods_name,
+			        goods_seller,
+			        goods_price,
+			        goods_delivery_date,
+			        goods_weight,
+			        goods_point
+			    FROM gogi_goods			 
+			    ORDER BY goods_delivery_date DESC
+			    LIMIT 10 OFFSET #{offset}
+			    ]]>
+		</select>
+		
+		<select id="goodsCount" resultType="int">
+			SELECT COUNT(*) FROM gogi_goods;
+		</select>
+	
+
+		  <select id="selectOrderGoodsList" resultMap="orderGoodsResult" parameterType="java.util.Map">
+			<![CDATA[
+				SELECT 
+					t.*,
+					(SELECT COUNT(*) FROM gogi_order WHERE DATE_FORMAT(order_time, '%Y-%m-%d') BETWEEN #{beginDate} AND #{endDate}
+						<if test="search_type=='orderer_id'">
+							AND orderer_id=#{search_word}
+						</if>
+						<if test="search_type=='orderer_name'">
+							AND orderer_name=#{search_word}
+						</if>
+						<if test="search_type=='orderer_hp_num'">
+							AND pay_orderer_hp_num=#{search_word} 
+						</if>
+					) AS total
+				FROM (
+					SELECT * FROM gogi_order
+					WHERE DATE_FORMAT(order_time, '%Y-%m-%d') BETWEEN #{beginDate} AND #{endDate}
+					<if test="search_type=='orderer_id'">
+						AND orderer_id=#{search_word}
+					</if>
+					<if test="search_type=='orderer_name'">
+						AND orderer_name=#{search_word}
+					</if>
+					<if test="search_type=='orderer_hp_num'">
+						AND pay_orderer_hp_num=#{search_word} 
+					</if>
+					ORDER BY PAY_ORDER_TIME DESC
+					LIMIT #{pageSize} OFFSET #{offset}
+				) AS t;
+			]]>
+		</select>
+	
+	<select id="selectGoodsDetail" resultMap="goodsResult" parameterType="int">
+	    <![CDATA[
+	       SELECT
+	    g.*,
+	    DATE_FORMAT(g.goods_delivery_date, '%Y-%m-%d') AS goods_delivery_date,
+	    d.file_name AS fileName
+	FROM
+	    gogi_goods g
+	INNER JOIN
+	    gogi_goods_image d ON g.goods_id = d.goods_id
+	WHERE
+	    d.file_type = 'main_image'
+	    AND g.goods_id = #{goods_id}
+	ORDER BY
+	    g.goods_id;
+	    ]]>
+	</select>
+	
+	<select id="selectGoodsImageFileList" resultMap="imageResult" parameterType="int">
+	    <![CDATA[
+		    SELECT * FROM gogi_goods_image 
+			WHERE goods_id = #{goods_id}
+			ORDER BY image_id ASC;
+    	]]>
+	</select>	
+	
+	<!-- 상품 정보를 수정합니다. -->
+	<update id="updateGoodsInfo" parameterType="java.util.HashMap">
+	    UPDATE gogi_goods
+	    <set>
+	        <if test="goods_sort != null">goods_sort = #{goods_sort},</if>
+	        <if test="goods_name != null">goods_name = #{goods_name},</if>
+	        <if test="goods_seller != null">goods_seller = #{goods_seller},</if>
+	        <if test="goods_price != null">goods_price = #{goods_price},</if>
+	        <if test="goods_sales_price != null">goods_sales_price = #{goods_sales_price},</if>
+	        <if test="goods_point != null">goods_point = #{goods_point},</if>
+	        <if test="goods_delivery_date != null">goods_delivery_date = #{goods_delivery_date},</if>
+	        <if test="goods_status != null">goods_status = #{goods_status},</if>
+	        <if test="goods_intro != null">goods_intro = #{goods_intro},</if>
+	        <if test="goods_weight != null">goods_weight = #{goods_weight}</if>
+	    </set>
+	    WHERE goods_id = #{goods_id}
+	</update>
+	
+	
+	
+	<!-- 상품 이미지 정보를 수정합니다. -->
+	<update id="updateGoodsImage" parameterType="imageFileVO">
+		update gogi_goods_image
+		set file_name=#{file_name}
+		where goods_id=#{goods_id} and image_id=#{image_id}
+	</update>
+	
+	<!-- 주문한 상품을 변경합니다. -->
+	<update id="updateOrderGoods" parameterType="java.util.HashMap" >
+		update gogi_order
+			<set> 
+				<if test=" order_delivery_status!='' and order_delivery_status!=null">
+					order_delivery_status=#{order_delivery_status},
+				</if>
+				<if test=" order_address!='' and order_address!=null">
+					order_address=#{order_address},
+				</if>
+		    </set>
+			    where 
+			    order_id=#{order_id}
+	</update>	
+	
+	
+	<delete id="deleteGoods" parameterType="String">
+		delete from gogi_goods
+	  	where goods_id=#{goods_id}
+	</delete>
+	
+	<delete id="deleteGoodsImage" parameterType="String">
+	  delete from gogi_goods_image
+	  where goods_id=#{goods_id}
+	</delete>
+		
+</mapper>

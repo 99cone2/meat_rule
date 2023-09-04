@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.cart">
+
+	<resultMap id="cartResult" type="cartVO">
+		<result property="mem_id" column="mem_id"/>
+		<result property="goods_id" column="goods_id"/>
+		<result property="cart_no" column="cart_no"/>
+		<result property="cart_count" column="cart_count"/>
+		<result property="cart_time" column="cart_time"/>
+		<result property="delivery_option" column="delivery_option"/>	
+	</resultMap>
+	
+	<resultMap id="goodsResult" type="goodsVO">
+		<result property="goods_id" column="goods_id" />
+		<result property="goods_sort" column="goods_sort" />
+		<result property="goods_name" column="goods_name" />
+		<result property="goods_seller" column="goods_seller" />
+		<result property="goods_country" column="goods_country" />
+		<result property="goods_price" column="goods_price" />
+		<result property="goods_point" column="goods_point" />
+		<result property="good_delivery_date" column="good_delivery_date" />
+		<result property="goods_intro" column="goods_intro" />
+		<result property="goods_status" column="goods_status" />
+		<result property="goods_sales_price" column="goods_sales_price" />
+		<result property="file_name" column="file_name" />
+		<result property="goods_weight" column="goods_weight" />
+	</resultMap>
+	
+	<!-- 모든 장바구니 정보 조회 -->
+	<select id="selectCartList" resultMap="cartResult" parameterType="cartVO">
+		<![CDATA[
+			select cart_no, goods_id, mem_id, cart_count, cart_time, delivery_option 
+			from gogi_cart
+			where mem_id=#{mem_id} 
+			order by cart_no
+		]]>
+	</select>
+	
+	<!-- 장바구니 테이블에 등록된 상품 번호 이용해 상품 정보 조회 -->
+	<select id="selectGoodsList" resultMap="goodsResult" parameterType="java.util.Map">
+	    <![CDATA[
+	        select g.*, d.file_name
+	        from (
+	            select a.cart_no, a.goods_id, a.mem_id, a.cart_count, b.goods_name, b.goods_price
+	            from gogi_cart a, gogi_goods b
+	            where a.goods_id = b.goods_id
+	            and mem_id = #{mem_id}
+	            order by a.cart_no asc 
+	        ) g, gogi_goods_image d
+	        where g.goods_id = d.goods_id
+	        and d.file_type = 'main_image'
+	        and g.goods_id in
+	    ]]>
+	    <foreach item="item" collection="cartList" open="(" separator="," close=")">
+	        #{item.goods_id}
+	    </foreach>
+	    order by cart_no asc 
+	</select>
+
+
+
+	<!-- 장바구니 테이블 추가 전에 해당 상품번호가 장바구니에 담겨있는지 조회 (장바구니 중복 담기 방지) -->
+	<select id="selectCountInCart" resultType="String" parameterType="cartVO">
+		 <![CDATA[
+        select case when count(*) = 0 then 'false' else 'true' end from gogi_cart
+        where goods_id=#{goods_id}
+        and mem_id=#{mem_id}
+    	]]>
+	</select>
+	
+	<!-- 상품추가 -->
+	<insert id="insertGoodsInCart" parameterType="cartVO">
+		<![CDATA[
+			insert into gogi_cart(cart_no, goods_id, mem_id,cart_count,cart_time, delivery_option)
+			values(#{cart_no}, #{goods_id}, #{mem_id},#{cart_count}, now(), #{delivery_option})
+		]]>	
+	</insert>
+	
+	<select id="selectMaxCartNo" resultType="int">
+	    <![CDATA[
+			select ifnull(max(cart_no), 0) + 1 from gogi_cart
+    	]]>
+	</select>
+	
+	<!-- 상품수정 -->
+	<update id="updateGoodsCount" parameterType="cartVO">
+		update gogi_cart
+		set cart_count=#{cart_count}
+		where mem_id=#{mem_id} 
+		and goods_id=#{goods_id}
+	</update>
+	
+	<!-- 상품삭제 -->
+	<delete id="deleteCartGoods" parameterType="int">
+		delete from gogi_cart
+		where cart_no=#{cart_no}
+	</delete>
+	
+</mapper>

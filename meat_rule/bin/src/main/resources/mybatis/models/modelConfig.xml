@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration 	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+	
+<configuration>
+  <typeAliases>
+	<!-- <typeAlias type="com.project.gogi.admin.notice.vo.NoticeVO" alias="noticeVO" /> -->
+    <typeAlias type="com.project.gogi.vo.MemberVO" alias="memberVO" />
+    <typeAlias type="com.project.gogi.vo.GoodsVO" alias="goodsVO" />
+    <typeAlias type="com.project.gogi.vo.ImageFileVO" alias="imageFileVO" />
+    <typeAlias type="com.project.gogi.vo.CartVO" alias="cartVO" />
+    <typeAlias type="com.project.gogi.vo.OrderVO" alias="orderVO" />
+    <typeAlias type="com.project.gogi.vo.NoticeVO" alias="noticeVO" />
+    <typeAlias type="com.project.gogi.vo.Criteria" alias="Criteria" /> 
+    <typeAlias type="com.project.gogi.vo.PageMaker" alias="PageMaker" />
+    <typeAlias type="com.project.gogi.vo.ServVO" alias="servVO" />
+    <typeAlias type="com.project.gogi.vo.ServImageFileVO" alias="servImageFileVO" />
+  	<typeAlias type="com.project.gogi.vo.KakaoDTO" alias="kdto" />
+  	<typeAlias type="com.project.gogi.vo.ReviewVO" alias="reviewVO" />
+  	<typeAlias type="com.project.gogi.vo.ReviewImageVO" alias="reviewImageVO" />
+  	<typeAlias type="com.project.gogi.vo.CommentVO" alias="CommentVO" />
+
+  </typeAliases>
+</configuration>

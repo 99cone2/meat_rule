@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.goods">
+
+	<!-- goodsVO resultMap 정의 -->
+	<resultMap id="goodsResult" type="goodsVO">
+		<result property="goods_id" column="goods_id" />
+		<result property="goods_sort" column="goods_sort" />
+		<result property="goods_name" column="goods_name" />
+		<result property="goods_seller" column="goods_seller" />
+		<result property="goods_country" column="goods_country" />
+		<result property="goods_price" column="goods_price" />
+		<result property="goods_point" column="goods_point" />
+		<result property="good_delivery_date" column="good_delivery_date" />
+		<result property="goods_intro" column="goods_intro" />
+		<result property="goods_status" column="goods_status" />
+		<result property="goods_sales_price" column="goods_sales_price" />
+		<result property="file_name" column="file_name" />
+		<result property="goods_weight" column="goods_weight" />
+	</resultMap>
+	
+	<!-- imageFileVO resultMap 정의 -->
+	<resultMap id="imageResult" type="imageFileVO">
+		<result property="image_id" column="image_id" />
+		<result property="goods_id" column="goods_id" />
+		<result property="file_name" column="file_name" />
+		<result property="reg_id" column="reg_id" />
+		<result property="file_type" column="file_type" />
+		<result property="creDate" column="creDate" />
+	</resultMap>
+	
+	<!--goods_status의 조건값으로 메인페이지 베스트 상품, 세일상품 조회  -->
+	<select id="selectGoodsMainList" parameterType="String" resultMap="goodsResult">
+		<![CDATA[
+		select t.*
+          from(
+			select g.*, d.file_name 
+			from gogi_goods g, gogi_goods_image d
+        	where g.goods_id=d.goods_id 
+        	and d.file_type='main_image'
+        	and goods_status=#{goods_status}
+            order by g.goods_delivery_date desc) t
+		]]>
+	</select>
+	
+	<!--쇼핑하기 페이지 카테고리별 상품조회  -->
+	<select id="selectGoodsShopList"  parameterType="String" resultMap="goodsResult">
+		<![CDATA[
+		select t.*
+          from(
+			select g.*, d.file_name 
+			from gogi_goods g, gogi_goods_image d
+        	where g.goods_id=d.goods_id 
+        	and goods_sort=#{goods_sort}
+            order by g.goods_delivery_date desc) t
+		]]>
+	</select>
+	
+	<!-- 상품 정보와 상품 메인 이미지 파일 정보 조회 -->
+	<select id="selectGoodsDetail" parameterType="int" resultMap="goodsResult" >
+	    <![CDATA[
+		    SELECT g.*, d.file_name
+			FROM gogi_goods g, gogi_goods_image d
+			WHERE g.goods_id = d.goods_id
+			AND g.goods_id = #{goods_id}
+			ORDER BY g.goods_id
+    	]]>
+	</select>
+	
+	<select id="selectGoodsBySearchWord" resultMap="goodsResult"   parameterType="String"  >
+       <![CDATA[
+	    SELECT g.*, d.file_name FROM gogi_goods g
+	    JOIN gogi_goods_image d ON g.goods_id = d.goods_id
+	    WHERE g.goods_name LIKE CONCAT('%', #{searchWord}, '%')
+	    ORDER BY g.goods_delivery_date DESC
+	    ]]>
+	</select>	
+	
+	<select id="selectKeywordSearch" resultType="String"   parameterType="String"  >
+	    <![CDATA[
+	    SELECT goods_name FROM gogi_goods
+	    WHERE goods_name LIKE CONCAT('%', #{keyword}, '%')
+	    ORDER BY goods_delivery_date DESC
+	    ]]>
+	</select>
+
+</mapper>

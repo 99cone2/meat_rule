@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.notice">
+ 
+   
+	   <!-- 목록+페이징 :공지사항-->
+	   <select id="noticeList" resultType="noticeVO"  parameterType="Criteria">
+	    <![CDATA[
+		    select notice_no, notice_title, notice_content, mem_id, notice_date, notice_hits
+		    from GOGI_NOTICE_BOARD
+		    order by notice_no desc
+		   	LIMIT #{pageStart}, #{perPageNum}        
+	    ]]>
+		</select>
+ 
+ 
+	   	<!-- 공지사항:게시물 총 갯수 확인 - -->
+		<!-- 번호만 있으면 확인 가능해 매개변수 타입 정수로 설정 -->
+		<select id="noticeListCount" resultType="int">
+		<![CDATA[
+			 select count(notice_no) from gogi_notice_board
+			 where notice_no > 0
+		 ]]>
+		</select>
+	
+	    <!-- 공지사항:-작성 -->
+	   <insert id="noticeWrite">
+	    	insert into gogi_notice_board(notice_title, notice_content,mem_id)
+	        values (#{notice_title}, #{notice_content}, #{mem_id})
+	 	</insert>
+	   
+	   <!-- 공지사항:조회 -->
+	   <select id="noticeRead" resultType="noticeVO" parameterType="int">
+			select notice_no, notice_title, notice_content,mem_id, notice_date,notice_hits
+			from gogi_notice_board
+			where notice_no = #{notice_no}
+	   </select>
+	   
+	   
+	   	<!-- 공지사항:조회수  -->
+		 <update id="updateNoticeViewCnt">
+		    update gogi_notice_board
+		    set 
+		    notice_hits = notice_hits +1
+		    where notice_no = #{notice_no}
+		</update>
+
+
+
+	   <!--공지사항: 수정 -->   
+	   <update id="noticeUpdate" parameterType="noticeVO">
+	    	update gogi_notice_board
+	     	set
+	     	notice_title = #{notice_title}, notice_content = #{notice_content}, mem_id=#{mem_id}
+	  		where notice_no = #{notice_no}
+	   </update>
+    
+   
+   	   <!-- 공지사항:삭제 -->
+	   <delete id="noticeDelete" parameterType="int">
+		    delete from
+		    gogi_notice_board
+		    where notice_no = #{notice_no}
+	   </delete>
+   
+   
+   		<!-- FAQ- -->
+     	<!-- 목록+페이징 :FAQ-->
+	   <select id="noticeFAQList" resultType="noticeVO"  parameterType="Criteria">
+	    <![CDATA[
+		    select notice_no_faq, notice_title_faq, notice_content_faq, mem_id, notice_date_faq, notice_hits_faq
+		    from  gogi_notice_faq_board
+			order by notice_no_faq desc
+		    LIMIT #{rowStart}, #{rowEnd}	
+	         ]]>
+		</select>
+   
+  
+   		<!-- FAQ:게시물 총 갯수 확인 - -->
+		<!-- 번호만 있으면 확인 가능해 매개변수 타입 정수로 설정 -->
+		<select id="noticeFAQListCount" resultType="int">
+		<![CDATA[
+			 select count(notice_no_faq) from gogi_notice_faq_board
+			 where notice_no_faq > 0
+		]]>
+		</select>
+
+	   <!--  FAQ:-작성 -->
+	   <insert id="noticeFAQWrite">
+	    	insert into gogi_notice_faq_board(notice_title_faq, notice_content_faq,mem_id)
+	        values (#{notice_title_faq}, #{notice_content_faq}, #{mem_id})
+	 	</insert>
+   
+	   <!--  FAQ:조회 -->
+	   <select id="noticeFAQRead" resultType="noticeVO" parameterType="int">
+			select notice_no_faq, notice_title_faq, notice_content_faq,mem_id, notice_date_faq,notice_hits_faq
+			from gogi_notice_faq_board
+			where notice_no_faq = #{notice_no_faq}
+	   </select>
+   
+   
+  		<!--  FAQ:조회수  -->
+		 <update id="updateNoticeFAQViewCnt">
+		    update gogi_notice_faq_board
+		    set 
+		    notice_hits_faq = notice_hits_faq +1
+		    where notice_no_faq = #{notice_no_faq}
+		</update>
+
+
+	   <!-- FAQ: 수정 -->   
+	   <update id="noticeFAQUpdate" parameterType="noticeVO">
+		    update gogi_notice_faq_board
+		    set
+		      notice_title_faq = #{notice_title_faq},
+		      notice_content_faq = #{notice_content_faq},
+		      mem_id=#{mem_id}
+		 	 where notice_no_faq = #{notice_no_faq}
+	   </update>   
+  
+   
+	   <!--  FAQ:삭제 -->
+	   <delete id="noticeFAQDelete" parameterType="int">
+		   delete from  gogi_notice_faq_board
+		   where notice_no_faq = #{notice_no_faq}
+	   </delete>
+   
+ 
+	  	<!-- 게시물 총 개수 카운트 -->
+	 	<select id="totalBoard" resultType="int"> 
+	 	<![CDATA[  
+	    	select count(notice_no_faq) from  gogi_notice_faq_board
+	     ]]> 
+	    </select>
+</mapper>

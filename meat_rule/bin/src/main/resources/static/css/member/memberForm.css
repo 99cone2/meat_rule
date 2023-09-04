@@ -1,0 +1,259 @@
+@charset "UTF-8";
+.memberForm-page {
+  width: 800px;
+  padding:15px;
+  padding-right:35px;
+  margin: 0 auto; 
+  font-family: 'Noto Sans KR', sans-serif;
+  border: 1px solid #E8E8E8;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.memberForm-text {
+  padding-top: 40px;
+  margin-bottom: 40px;
+  text-align: center;
+  font-size: 35px;
+  font-weight: bold !important;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+} 
+
+.form input {
+  font-family: 'Noto Sans KR', sans-serif;
+  outline: 0;
+  width: 600px;
+  height: 40px;
+  border: 1px solid #E8E8E8;
+  margin: 5px 0;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.form button {
+  font-family: 'Noto Sans KR', sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  margin-top: 0px;
+  background: #1D1D1D;
+  width: 70px;
+  height: 40px;
+  border: 0;
+  padding: 10px;
+  font-weight:500;
+  color: #FFFFFF;
+  vertical-align:middle;
+  font-size: 15px !important;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+ .joinButton{
+	display:flex;	
+	font-family: 'Noto Sans KR', sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #1D1D1D;
+  width: 100px;
+  height: 50px;
+  border: 0;
+  color: #FFFFFF;
+  vertical-align:middle;
+  font-size: 15px !important;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+}
+
+.form .message a {
+  color: #523846;
+  font-size: 15px !important;
+  text-decoration: none;
+}
+
+.container:before,
+.container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#mem_tel1{
+ font-family: 'Noto Sans KR', sans-serif;
+  outline: 0;
+  width: 600px;
+  height: 40px;
+  border: 1px solid #E8E8E8;
+  margin: 5px 5px 5px 0;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.container .info {
+  margin: 50px auto;
+  text-align: center;
+}
+
+.container .info h1 {
+  margin: 0 0 15px;
+  padding: 0;
+  font-size: 36px;
+  font-weight: 300;
+  color: #1a1a1a;
+}
+
+.container .info span {
+  color: #4d4d4d;
+  font-size: 12px;
+}
+
+.container .info span a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.container .info span .fa {
+  color: #EF3B3A;
+}
+
+.login-icon img {
+  width: 70px; 
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;      
+}
+
+.birth-inputs input,
+.phone-inputs input {
+  display: inline-block;
+  width: 100px;
+  margin-right: 5px;
+}
+
+.birth-inputs input:last-child,
+.phone-inputs input:last-child {
+  margin-right: 0;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+/* 추가 스타일 */
+.form label {
+  display: block;
+  width: 150px;
+  text-align: right;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.form .form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.form .form-row input[type="text"],
+.form .form-row input[type="password"] {
+ border: 1px solid #E8E8E8;
+}
+
+.form .form-row input[type="text"]:focus,
+.form .form-row input[type="password"]:focus {
+  border-bottom-color: #523846;
+}
+
+.form .form-row::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: #ccc;
+  margin-left: 10px;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  width:100%;
+}
+
+.label-group {
+  width: 80px;
+  text-align: left;
+  margin-right: 10px;
+}
+
+.input-group {
+  display: flex;
+  width:100%;
+}
+
+.input-group input {
+  margin-right: 5px;
+}
+
+.form-group.button-group {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.form-group.button-group button {
+  margin-left: 10px;
+}
+
+#mem_id,
+#mem_name,
+#mem_email,
+#mem_pw,
+#mem_pw_confirm,
+#mem_birth_y,
+#mem_birth_m,
+#mem_birth_d,
+#mem_tel1,
+#mem_tel2,
+#mem_tel3,
+#zipcode,
+#roadAddress,
+#jibunAddress,
+#namujiAddress {
+  width: 100%;
+}
+
+#addressSearch{
+	 font-family: 'Noto Sans KR', sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #1D1D1D;
+  width: 70px;
+  height: 40px;
+  border: 0;
+  padding: 5px;
+  color: #FFFFFF;
+  vertical-align:middle;
+  font-size: 15px !important;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  margin:0;	
+}
+
+#checkIdButton,
+#sendMail {
+  /* Update the width as needed */
+  width: 100px;
+}
