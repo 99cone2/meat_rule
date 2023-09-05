@@ -8,7 +8,7 @@
  <h3>🖥️ 기술스택</h3>
 </div>
 <div align=center>
-#### [Back]
+<h5>[Back]</h5>
 <img src="https://img.shields.io/badge/java-007396?style=flat&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/springboot-6DB33F?style=flat&logo=springboot&logoColor=white"> <img src="https://img.shields.io/badge/Tomcat-F8DC75?style=flat&logo=ApacheTomcat&logoColor=white" /><br>
 
 #### [Front]
