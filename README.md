@@ -1,9 +1,10 @@
 <div align=center>
 <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=Meat_Rule&fontSize=90" />
 </div>
-  🍗육류 판매 쇼핑몰 프로젝트
+
 
 <div align=center>
+	 <h1> 🍗육류 판매 쇼핑몰 프로젝트 </h1> <br>
  <h2>🖥️ 기술스택</h2>
 </div>
 <div align=center>
