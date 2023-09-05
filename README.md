@@ -5,7 +5,7 @@
 </div>
 
 <div align=center>
-	 🖥️ 기술스택
+	 #🖥️ 기술스택
 </div>
 <div align=center>
 #### [Back]
@@ -32,7 +32,7 @@
 	<br>
 	3명(구태선, 오동림, 김기욱)
 </div>
-3명(구태선, 오동림, 김기욱)
+
 
 <br>
 <div align=center>
