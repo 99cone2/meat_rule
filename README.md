@@ -7,7 +7,7 @@
 <div align=center>
 	 🖥️ 기술스택
 </div>
-
+<div align=center>
 #### [Back]
 <img src="https://img.shields.io/badge/java-007396?style=flat&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/springboot-6DB33F?style=flat&logo=springboot&logoColor=white"> <img src="https://img.shields.io/badge/Tomcat-F8DC75?style=flat&logo=ApacheTomcat&logoColor=white" /><br>
 
@@ -23,8 +23,10 @@
 #### [Tools]
 <img src="https://img.shields.io/badge/github-181717?style=flat&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/git-F05032?style=flat&logo=git&logoColor=white">
 <img src="https://img.shields.io/badge/Notion-333317?style=flat&logo=Notion&logoColor=white" />
+</div>
 <br>
-
+<br>
+<br>
 <div align=center>
 	 👩‍👧‍👦 개발인원
 </div>
