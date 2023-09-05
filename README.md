@@ -34,6 +34,11 @@
 <br>
 <br>
 <div align=center>
+	<h2>🗓️ 프로젝트기</h2>
+	2023년 07월 10일 ~ 2023년 08월 3일
+</div>
+
+<div align=center>
 	<h2>:wrench: 기능 구현 :wrench:<h2>
 <div align=center>
 	
