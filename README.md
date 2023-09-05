@@ -54,15 +54,8 @@
  <div align=center>
 	<h2>🍀 기능 구현</h2>
 <br>
-<h4>로그인/카카오API<br></h4>
-
-회원 로그인
-![login](https://github.com/grapejuic2/meatRule_boot/assets/122254607/e59e5926-676e-442e-ba1d-11a021905f7e)
-<br>
-관리자 로그인
-
+ 
 </div>
-<br>
 <br>
 <details>
 <summary>로그인/카카오API</summary>
