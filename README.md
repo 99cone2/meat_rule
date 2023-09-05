@@ -56,7 +56,7 @@
 </details>
 
 <details>
-<summary><h4>상품 검색(자동완성)</h4></summary>
+<summary><h7>상품 검색(자동완성)</h7></summary>
 <div markdown="1">
 
 ![장바구니-결제](https://github.com/grapejuic2/meatRule_boot/assets/122254607/1406e5c6-7f3c-4513-8a3b-aa874cd8a6f6)
