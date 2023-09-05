@@ -53,8 +53,6 @@
 <br>
  <div align=center>
 	<h2>🍀 기능 구현</h2>
-<br>
- 
 </div>
 <details>
 <summary>로그인/카카오API</summary>
