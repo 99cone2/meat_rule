@@ -1,4 +1,4 @@
-# 육류 판매 쇼핑몰 프로젝트 : meat_rule
+# 육류 판매 쇼핑몰 프로젝트
 
 <div align=center>
 <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=Meat_Rule&fontSize=90" />
