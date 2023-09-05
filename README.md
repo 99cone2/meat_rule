@@ -49,7 +49,12 @@
 		6.회원 권한<br>
 		7.관리자 권한 <br>
 <div align=center>
-	
+<br>
+<br>
+ <div align=center>
+	<h2>👩‍👧‍👦 개발인원</h2>
+	3명(구태선, 오동림, 김기욱)
+</div>
 <details>
 <summary>로그인/카카오API</summary>
 <div markdown="5">
