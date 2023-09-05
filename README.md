@@ -62,7 +62,7 @@
 회원 로그인
 ![회원로그인](https://github.com/99cone2/meat_rule/assets/119160575/8e892f95-733b-40b0-a3e8-b90664062377)
 관리자 로그인
-
+![관리자로그인](https://github.com/99cone2/meat_rule/assets/119160575/4d91cd67-b783-4f35-a72c-59a11b1c7fa3)
 <br>
 </div>
 </details>
@@ -71,7 +71,7 @@
 <summary>상품 검색(자동완성)</summary>
 <div markdown="1">
 
-![장바구니-결제](https://github.com/grapejuic2/meatRule_boot/assets/122254607/1406e5c6-7f3c-4513-8a3b-aa874cd8a6f6)
+![검색기능](https://github.com/99cone2/meat_rule/assets/119160575/8aa83e23-14f0-48ff-9302-87e52a244dab)
 
 </div>
 </details>
@@ -80,7 +80,7 @@
 <summary>고객센터 게시판</summary>
 <div markdown="1">
 
-![장바구니-결제](https://github.com/grapejuic2/meatRule_boot/assets/122254607/1406e5c6-7f3c-4513-8a3b-aa874cd8a6f6)
+![고객센터 게시판](https://github.com/99cone2/meat_rule/assets/119160575/07b3b6c1-7db6-4c46-8d57-c13bc27ce797)
 
 </div>
 </details>
@@ -89,7 +89,7 @@
 <summary>게시물 댓글 / 대댓글</summary>
 <div markdown="1">
 
-![댓글](https://github.com/grapejuic2/meatRule_boot/assets/122254607/fa4a725c-2b0f-4797-92ed-0e1f4998be10)
+![댓글대댓글](https://github.com/99cone2/meat_rule/assets/119160575/7df647ff-aa80-43df-8943-0693b28420b4)
 
 </div>
 </details>
