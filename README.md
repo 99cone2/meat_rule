@@ -5,7 +5,7 @@
 </div>
 
 <div align=center>
-	#### 🖥️ 기술스택
+	 🖥️ 기술스택
 </div>
 
 #### [Back]
@@ -23,9 +23,12 @@
 #### [Tools]
 <img src="https://img.shields.io/badge/github-181717?style=flat&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/git-F05032?style=flat&logo=git&logoColor=white">
 <img src="https://img.shields.io/badge/Notion-333317?style=flat&logo=Notion&logoColor=white" />
-
-
 <br>
+
+<div align=center>
+	 👩‍👧‍👦 개발인원
+</div>
+3명(구태선, 오동림, 김기욱)
 
 <br>
 <div align=center>
