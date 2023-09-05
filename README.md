@@ -40,12 +40,12 @@
 <br>
 
 <div align=center>
-	<h2>:wrench: 기능 구현 :wrench:<h2>
+	<h2>:wrench: 주요 기능 :wrench:<h2>
 <div align=center>
 	
 <details>
 <summary>로그인/카카오API</summary>
-<div markdown="1">
+<div markdown="5">
 
 ![login](https://github.com/grapejuic2/meatRule_boot/assets/122254607/e59e5926-676e-442e-ba1d-11a021905f7e)
 
