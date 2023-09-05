@@ -52,8 +52,9 @@
 <br>
 <br>
  <div align=center>
-	<h2>👩‍👧‍👦 개발인원</h2>
-	3명(구태선, 오동림, 김기욱)
+	<h2>🍀 기능 구현</h2>
+
+
 </div>
 <details>
 <summary>로그인/카카오API</summary>
