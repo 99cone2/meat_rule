@@ -26,17 +26,15 @@
 </div>
 <br>
 <br>
-<br>
 <div align=center>
 	<h2>👩‍👧‍👦 개발인원</h2>
-	<br>
 	3명(구태선, 오동림, 김기욱)
 </div>
 
-
+<br>
 <br>
 <div align=center>
-	<p>:wrench: 기능 구현 :wrench:</p>
+	<h2>:wrench: 기능 구현 :wrench:<h2>
 <div align=center>
 	
 <details>
