@@ -5,7 +5,7 @@
 </div>
 
 <div align=center>
-	## 🖥️ 기술스택
+	#### 🖥️ 기술스택
 </div>
 
 #### [Back]
