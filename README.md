@@ -40,8 +40,8 @@
 <br>
 
 <div align=center>
-	<h2>:wrench: 주요 기능 :wrench:</h2>
-		1.로그인/카카오API<br>
+	<h2>:wrench: 주요 기능</h2>
+		<p>1.로그인/카카오API</p><br>
 		2.상품 검색(자동완성)<br>
 		3.고객센터 게시판<br>
 		4.게시물 댓글 / 대댓글<br>
