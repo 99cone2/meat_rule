@@ -5,7 +5,7 @@
 </div>
 
 <div align=center>
- <h3>🖥️ 기술스택</h3>
+ <h2>🖥️ 기술스택</h2>
 </div>
 <div align=center>
 <h4>[Back]</h4>
@@ -28,7 +28,7 @@
 <br>
 <br>
 <div align=center>
-	 👩‍👧‍👦 개발인원
+	<h2>👩‍👧‍👦 개발인원</h2>
 	<br>
 	3명(구태선, 오동림, 김기욱)
 </div>
