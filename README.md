@@ -1,15 +1,13 @@
-# meat_rule
+# 육류 판매 쇼핑몰 프로젝트 : meat_rule
 
 <div align=center>
 <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=Meat_Rule&fontSize=90" />
 </div>
 
 <div align=center>
-	<h3>📚 Tech Stack 📚</h3>
-	<p>✨ Platforms & Languages ✨</p>
+	## 🖥️ 기술스택
 </div>
 
-## 💿 기술스택
 #### [Back]
 <img src="https://img.shields.io/badge/java-007396?style=flat&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/springboot-6DB33F?style=flat&logo=springboot&logoColor=white"> <img src="https://img.shields.io/badge/Tomcat-F8DC75?style=flat&logo=ApacheTomcat&logoColor=white" /><br>
 
