@@ -47,13 +47,16 @@
 <summary>로그인/카카오API</summary>
 <div markdown="5">
 
+회원 로그인
 ![login](https://github.com/grapejuic2/meatRule_boot/assets/122254607/e59e5926-676e-442e-ba1d-11a021905f7e)
+
+관리자 로그인
 
 </div>
 </details>
 
 <details>
-<summary>상품 주문</summary>
+<summary>상품 검색(자동완성)</summary>
 <div markdown="1">
 
 ![장바구니-결제](https://github.com/grapejuic2/meatRule_boot/assets/122254607/1406e5c6-7f3c-4513-8a3b-aa874cd8a6f6)
@@ -62,7 +65,36 @@
 </details>
 
 <details>
-<summary>회원 관리</summary>
+<summary>고객센터 게시판</summary>
+<div markdown="1">
+
+![장바구니-결제](https://github.com/grapejuic2/meatRule_boot/assets/122254607/1406e5c6-7f3c-4513-8a3b-aa874cd8a6f6)
+
+</div>
+</details>
+
+<details>
+<summary>게시물 댓글 / 대댓글</summary>
+<div markdown="1">
+
+![댓글](https://github.com/grapejuic2/meatRule_boot/assets/122254607/fa4a725c-2b0f-4797-92ed-0e1f4998be10)
+
+</div>
+</details>
+
+
+<details>
+<summary>장바구니</summary>
+<div markdown="1">
+
+![장바구니-결제](https://github.com/grapejuic2/meatRule_boot/assets/122254607/1406e5c6-7f3c-4513-8a3b-aa874cd8a6f6)
+
+</div>
+</details>
+
+
+<details>
+<summary>회원 권한</summary>
 <div markdown="1">
 
 ![회원관리](https://github.com/grapejuic2/meatRule_boot/assets/122254607/d34ae190-cd9a-440c-9378-a6c1b088e5a1)
@@ -79,14 +111,7 @@
 </div>
 </details>
 
-<details>
-<summary>게시물 댓글 / 대댓글</summary>
-<div markdown="1">
 
-![댓글](https://github.com/grapejuic2/meatRule_boot/assets/122254607/fa4a725c-2b0f-4797-92ed-0e1f4998be10)
-
-</div>
-</details>
 
 </div>
 </div>
