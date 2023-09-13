@@ -55,6 +55,7 @@
 					<input id="member_addr" type="text" placeholder="주소" readonly>
 					<input type="button" id="member_btn" value="검색"
 						onclick="findAddr()">
+					<!-- c:if 사용 불가: 동적인 조거부 블록은 서버 측에서 실행되기 떄문에  JavaScript랑 같이 사용 불가 -> script 사용해 조건부로 표기해야함 -->
 					<div id="delivery_message" style="display: none;">
 						<p id="dv_w_p">배달 가능 지역입니다.</p>
 					</div>
