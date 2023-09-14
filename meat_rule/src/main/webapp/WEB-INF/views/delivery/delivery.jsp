@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -165,8 +164,9 @@
 		</section>
 	</div>
 
-	<!-- 캠핑 주소 검색 관련 script -->
+
 	<script>
+	<!-- 캠핑 주소 검색 관련 script -->
 		function findAddr() {
 			new daum.Postcode(
 					{
@@ -203,34 +203,35 @@
 				deliveryMessage.style.display = "none";
 			}
 		}
+		
+		<!--Tab 관련  -->
+			function deliveryOpen(evt, deliveryName) {
+				var i, tabcontent, tablinks;
+
+				// class="tabcontent"이거 숨기기
+				tabcontent = document.getElementsByClassName("tabcontent");
+				for (i = 0; i < tabcontent.length; i++) {
+					tabcontent[i].style.display = "none";
+				}
+
+				//class="tablinks" 이거 다 가져오고 활성화 버튼 뺴기
+				tablinks = document.getElementsByClassName("tablinks");
+				for (i = 0; i < tablinks.length; i++) {
+					tablinks[i].className = tablinks[i].className.replace(
+							" active", "");
+				}
+
+				// 선택한 tab 보여주고 버튼 활성화(active) 그리고 열기 
+				document.getElementById(deliveryName).style.display = "block";
+				evt.currentTarget.className += " active";
+			}
+	 
 	</script>
+	<!-- Daum 우편번호 서비스를 사용하기 위한 라이브러리 -->
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js">
-		
 	</script>
 
-	<!--Tab 관련  -->
-	<script type="text/javascript">
-		function deliveryOpen(evt, deliveryName) {
-			var i, tabcontent, tablinks;
-
-			// class="tabcontent"이거 숨기기
-			tabcontent = document.getElementsByClassName("tabcontent");
-			for (i = 0; i < tabcontent.length; i++) {
-				tabcontent[i].style.display = "none";
-			}
-
-			//class="tablinks" 이거 다 가져오고 활성화 버튼 뺴기
-			tablinks = document.getElementsByClassName("tablinks");
-			for (i = 0; i < tablinks.length; i++) {
-				tablinks[i].className = tablinks[i].className.replace(
-						" active", "");
-			}
-
-			// 선택한 tab 보여주고 버튼 활성화(active) 그리고 열기 
-			document.getElementById(deliveryName).style.display = "block";
-			evt.currentTarget.className += " active";
-		}
-	</script>
+	
 </body>
 </html>

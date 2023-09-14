@@ -118,8 +118,8 @@ margin-top: 100px;
 #delivery_why_d li{
 display: inline-block; 
 text-align: center;
-m
-/*   margin-left: 50px; */ } 
+
+/*   margin-left: 50px; */ }
 
 .dh6 {
 	font-family: 'Nanum Gothic', sans-serif;
@@ -308,9 +308,9 @@ width: 400px;
   /*  
    background-color: #f4f4f4;
     text-align: center;
-	justify-content: center; */
+	justify-content: center;
    
-}
+} */
  
  .dv_c_d2 {
   display: flex;
@@ -336,7 +336,7 @@ width: 400px;
 
 .dv_c_d2 ul li {
   width: 150px; /* 필요에 따라 각 목록 항목의 너비를 조정하세요 */
-  margin: 10px; 10px; /* 필요에 따라 목록 항목 사이의 간격을 조정하세요 */
+  margin: 10px;  /* 필요에 따라 목록 항목 사이의 간격을 조정하세요 */
 }
 
 .dv_c_d2 h6 {
@@ -380,3 +380,7 @@ font-family: 'Nanum Gothic', sans-serif;
 margin-top: 30px;
 margin-bottom: 10px;
 }  
+
+#dv_w_p{
+	color:  #D24826;
+}
