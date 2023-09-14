@@ -227,7 +227,7 @@
 						" active", "");
 			}
 
-			// Show the current tab, and add an "active" class to the button that opened the tab
+			// 선택한 tab 보여주고 버튼 활성화(active) 그리고 열기 
 			document.getElementById(deliveryName).style.display = "block";
 			evt.currentTarget.className += " active";
 		}
