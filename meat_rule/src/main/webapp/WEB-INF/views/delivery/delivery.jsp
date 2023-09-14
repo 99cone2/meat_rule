@@ -214,13 +214,13 @@
 		function deliveryOpen(evt, deliveryName) {
 			var i, tabcontent, tablinks;
 
-			// Get all elements with class="tabcontent" and hide them
+			// class="tabcontent"이거 숨기기
 			tabcontent = document.getElementsByClassName("tabcontent");
 			for (i = 0; i < tabcontent.length; i++) {
 				tabcontent[i].style.display = "none";
 			}
 
-			// Get all elements with class="tablinks" and remove the class "active"
+			//class="tablinks" 이거 다 가져오고 활성화 버튼 뺴기
 			tablinks = document.getElementsByClassName("tablinks");
 			for (i = 0; i < tablinks.length; i++) {
 				tablinks[i].className = tablinks[i].className.replace(
