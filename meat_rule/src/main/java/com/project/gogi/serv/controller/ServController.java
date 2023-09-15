@@ -44,13 +44,13 @@ import com.project.gogi.vo.PageMaker;
 import com.project.gogi.vo.ServImageFileVO;
 import com.project.gogi.vo.ServVO;
 
-@Controller
-@RequestMapping("/serv")
+@Controller //컨트롤러 선언
+@RequestMapping("/serv") // 요청주소와 실제주소 매팽하는 어노테이션
 public class ServController extends BaseController {
 
-	private static final Logger logger = LoggerFactory.getLogger(ServController.class);
+	private static final Logger logger = LoggerFactory.getLogger(ServController.class); //private static final 선언변수 사용시 재할당 x, 메모리에 한번 올라가면 같은 값은 클래스 내부의 전체 필드, 메서드에서 공유한다.
 
-	@Autowired
+	@Autowired // 빈에 DI(의존성 주입)를 도와주는 어노테이션 
 	ServService servService;
 	@Autowired
 	private HttpSession httpSession;
