@@ -45,7 +45,7 @@ import com.project.gogi.vo.ServImageFileVO;
 import com.project.gogi.vo.ServVO;
 
 @Controller //컨트롤러 선언
-@RequestMapping("/serv") // 요청주소와 실제주소 매팽하는 어노테이션
+@RequestMapping("/serv") // 요청주소와 실제주소 매팽하는 어노테이션 = 이곳으로 들어오는  api  주소를 mapping, / serv 주소로 받겠다.
 public class ServController extends BaseController {
 
 	private static final Logger logger = LoggerFactory.getLogger(ServController.class); //private static final 선언변수 사용시 재할당 x, 메모리에 한번 올라가면 같은 값은 클래스 내부의 전체 필드, 메서드에서 공유한다.
@@ -63,11 +63,11 @@ public class ServController extends BaseController {
 	private static final String GOGI_IMAGE_REPO_PATH1 = "C:\\meatrule\\file_repo\\servBoard";
 
 	// 게시물 목록+페이징
-	@GetMapping(value = "/list.do")
+	@GetMapping(value = "/list.do")//
 	public String getServList(Model model, Criteria cri, HttpServletRequest request, HttpServletResponse response, ServVO vo) throws Exception {
 
 		List<ServVO> servList = servService.ServList(cri);
-		model.addAttribute("servList", servList);
+		model.addAttribute("servList", servList); //view로 데이터 전달(servList.jsp)
 
 		// 게시판 페이징 가져오기
 		PageMaker pageMaker = new PageMaker();
@@ -75,8 +75,7 @@ public class ServController extends BaseController {
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(servService.ServListCount());
 		model.addAttribute("pageMaker", pageMaker);
-		// System.out.println("@@@@@@@@@게시판페이징:"+cri.toString());
-		// System.out.println("@@@@@@@@@게시판페이징:"+pageMaker.toString());
+	
 
 		// 8.1 추가 로그인 확인
 		Boolean isLogOn = (Boolean) httpSession.getAttribute("isLogon");
