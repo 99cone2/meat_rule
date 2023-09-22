@@ -71,7 +71,7 @@ public class ServController extends BaseController {
 
 		// 게시판 페이징 가져오기
 		PageMaker pageMaker = new PageMaker();
-
+		//cri로 총 게시글 수, 현재 페이지, 페이지 당 게시글 수 값 가져오기
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(servService.ServListCount());
 		model.addAttribute("pageMaker", pageMaker);

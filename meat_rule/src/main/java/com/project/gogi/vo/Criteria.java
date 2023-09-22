@@ -46,6 +46,7 @@ public class Criteria {
 	 //특정 페이지의 게시글 시작 번호, 게시글 시작 행 번호
 	 //현재 페이지의 게시글 시작 번호 = (현재 페이지 번호 - 1) * 페이지당 보여줄 게시글 갯수
 	 //현재 페이지의 페이지당 게시글 수를 곱하여 현재 페이지의 시작 게시글 limit 수를 구하는것(Mysql) 
+	 //1을 뺴는건 기본 page를 1로 설정했기 때문임
 	 public int getPageStart()
 	 {
 	  return (this.page - 1) * perPageNum;
