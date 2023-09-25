@@ -127,6 +127,18 @@ public class ServVO {
 
 
 
+	@Override
+	public String toString() {
+		return "ServVO [cust_serv_no=" + cust_serv_no + ", cust_serv_title=" + cust_serv_title + ", cust_serv_content="
+				+ cust_serv_content + ", mem_id=" + mem_id + ", cust_serv_date=" + cust_serv_date + ", cust_serv_hits="
+				+ cust_serv_hits + ", cust_serv_pw=" + cust_serv_pw + ", cust_serv_notice=" + cust_serv_notice
+				+ ", imageFileName=" + imageFileName + ", originalFileName=" + originalFileName + ", cust_serv_secret="
+				+ cust_serv_secret + ", cust_serv_dateStr=" + cust_serv_dateStr + "]";
+	}
+
+	
+
+
 	 
 	
 	 

@@ -67,7 +67,7 @@ public class ServController extends BaseController {
 	public String getServList(Model model, Criteria cri, HttpServletRequest request, HttpServletResponse response, ServVO vo) throws Exception {
 
 		List<ServVO> servList = servService.ServList(cri);
-		model.addAttribute("servList", servList); //view로 데이터 전달(servList.jsp)
+		model.addAttribute("servList", servList); //view로 데이터 전달(servList.jsp)  키 값
 
 		// 게시판 페이징 가져오기
 		PageMaker pageMaker = new PageMaker();
@@ -86,6 +86,7 @@ public class ServController extends BaseController {
 			model.addAttribute("mem_id", mem_id);
 			model.addAttribute("isLogOn", isLogOn);
 		}
+		System.out.print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+servList);
 
 		return "serv/servList";
 
