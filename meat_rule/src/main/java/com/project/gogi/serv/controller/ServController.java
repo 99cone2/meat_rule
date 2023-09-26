@@ -75,7 +75,7 @@ public class ServController extends BaseController {
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(servService.ServListCount());
 		model.addAttribute("pageMaker", pageMaker);
-	
+		 
 
 		// 8.1 추가 로그인 확인
 		Boolean isLogOn = (Boolean) httpSession.getAttribute("isLogon");
@@ -86,7 +86,7 @@ public class ServController extends BaseController {
 			model.addAttribute("mem_id", mem_id);
 			model.addAttribute("isLogOn", isLogOn);
 		}
-		System.out.print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+servList);
+		System.out.print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@데이터 확인"+servList);
 
 		return "serv/servList";
 
@@ -96,10 +96,11 @@ public class ServController extends BaseController {
 	@GetMapping(value = "/write.do")
 	public String getServWrite(HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
+		//세션에서 "memberInfo"라는 이름의 MemberVO 객체를 가져오려 시도
 		MemberVO memberVO = (MemberVO) session.getAttribute("memberInfo");
 
-		// 8.1 구태선 추가
-		Boolean isLogOn = (Boolean) httpSession.getAttribute("isLogon"); // 로그인 여부
+		// 8.1 구태선 추가 /로그인 여부
+		Boolean isLogOn = (Boolean) httpSession.getAttribute("isLogon"); 
 
 		if (isLogOn != null && isLogOn) { // 로그인 상태 아니여도 공지사항 읽기 가능
 			memberVO = (MemberVO) httpSession.getAttribute("memberInfo");
@@ -109,6 +110,7 @@ public class ServController extends BaseController {
 			System.out.println("고객센터 글작성 아이디 확인" + mem_id);
 		} // 추가 end
 
+		// 메서드는 "serv/servWrite"라는 문자열을 반환. 화면 띄우기 용 
 		return "serv/servWrite";
 	}
 
@@ -122,6 +124,7 @@ public class ServController extends BaseController {
 
 		// 매개변수 정보와 파일 정보를 저장할 Map 생성
 		Map<String, Object> servMap = new HashMap<String, Object>();
+		//인터페이스                        //클래스 > 메소드 사용가능
 		Enumeration enu = multipartRequest.getParameterNames();
 
 		// 전송된 매개변수 값 key/value로 map에 저장
