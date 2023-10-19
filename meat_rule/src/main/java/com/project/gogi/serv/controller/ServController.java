@@ -182,7 +182,7 @@ public class ServController extends BaseController {
 	}
 
 	
-	//게시물 조회 + 조회수 중복방지
+	//게시물 조회 + 조회수 중복방지 
 	@GetMapping(value = "/read.do")
 	public String getServView(@RequestParam("cust_serv_no") int cust_serv_no, Model model, ServVO vo) throws Exception {
 		Boolean isLogOn = (Boolean) httpSession.getAttribute("isLogon"); // 로그인 여부
