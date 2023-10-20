@@ -63,7 +63,7 @@ public class ServController extends BaseController {
 	private static final String GOGI_IMAGE_REPO_PATH1 = "C:\\meatrule\\file_repo\\servBoard";
 
 	// 게시물 목록+페이징
-	@GetMapping(value = "/list.do")//
+	@GetMapping(value = "/list.do")
 	public String getServList(Model model, Criteria cri, HttpServletRequest request, HttpServletResponse response, ServVO vo) throws Exception {
 
 		List<ServVO> servList = servService.ServList(cri);
@@ -77,14 +77,15 @@ public class ServController extends BaseController {
 		model.addAttribute("pageMaker", pageMaker);
 		 
 
-		// 8.1 추가 로그인 확인
+		// 10.20 추가 로그인 확인
+		//isLogon 속성 값 isLogOn이라는 변수에 저장 > 로그인 상태
 		Boolean isLogOn = (Boolean) httpSession.getAttribute("isLogon");
 		// 로그인 상태만 읽기 가능하게 하기
 		if (isLogOn != null && isLogOn) {
-			memberVO = (MemberVO) httpSession.getAttribute("memberInfo");
-			String mem_id = memberVO.getMem_id();
+			memberVO = (MemberVO) httpSession.getAttribute("memberInfo"); //memberInfo 값 memberVO 변수에 저장
+			String mem_id = memberVO.getMem_id(); 
 			model.addAttribute("mem_id", mem_id);
-			model.addAttribute("isLogOn", isLogOn);
+			model.addAttribute("isLogOn", isLogOn); //사용자 로그인 ㅅ아태
 		}
 		System.out.print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@데이터 확인"+servList);
 
