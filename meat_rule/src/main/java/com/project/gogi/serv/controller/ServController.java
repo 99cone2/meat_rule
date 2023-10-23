@@ -85,7 +85,7 @@ public class ServController extends BaseController {
 			memberVO = (MemberVO) httpSession.getAttribute("memberInfo"); //memberInfo 값 memberVO 변수에 저장
 			String mem_id = memberVO.getMem_id(); 
 			model.addAttribute("mem_id", mem_id);
-			model.addAttribute("isLogOn", isLogOn); //사용자 로그인 ㅅ아태
+			model.addAttribute("isLogOn", isLogOn); //사용자 로그인 상태
 		}
 		System.out.print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@데이터 확인"+servList);
 
