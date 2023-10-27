@@ -93,7 +93,7 @@ public class ServController extends BaseController {
 
 	}
 
-	//게시물 작성 get
+	//게시물 작성 get 
 	@GetMapping(value = "/write.do")
 	public String getServWrite(HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
